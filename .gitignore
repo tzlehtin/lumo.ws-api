@@ -1,0 +1,48 @@
+# Maven -paketinhallintaohjelma
+/target/
+
+# Gradle -paketinhallintaohjelma
+/.gradle
+/build/
+
+# IDE tiedostot
+/.idea/
+/.vscode/
+.DS_Store
+
+# Tuntematon, IDE:n luoma kansio
+/.idea_modules/
+*.iml
+
+# Paikalliset konfiguraatio tiedostot
+*.properties.local
+*.yml.local
+/src/main/resources/application.properties
+/src/main/resources/application.yml
+/src/main/resources/application-local.properties
+/src/main/resources/application-local.yml
+
+# Logi tiedostot
+*.log
+/logs/
+
+# Kohdennetut käyttöjärjestelmä-tiedostot
+*.swp
+*.bak
+*.orig
+
+# Java
+/bin/
+/lib/
+/tmp/
+*.class
+*.jar
+*.war
+*.zip
+*.tar
+*.gz
+/test-output/
+
+# Muut
+# MongoDB data tiedostot
+/data/db/
