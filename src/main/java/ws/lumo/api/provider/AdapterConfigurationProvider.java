@@ -1,6 +1,7 @@
 package ws.lumo.api.provider;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Defines a contract for providing adapter configurations to the adapter library.
@@ -15,4 +16,6 @@ public interface AdapterConfigurationProvider {
      * @return A list of configurations for the given type.
      */
     List<AdapterConfig> findConfigurationsByType(String type);
+    Optional<AdapterConfig> findConfigurationById(String adapterId);
+
 }
