@@ -16,6 +16,12 @@ public interface AdapterConfigurationProvider {
      * @return A list of configurations for the given type.
      */
     List<AdapterConfig> findConfigurationsByType(String type);
+
+    /**
+     * Retrieves all adapter configurations from the system.
+     * @return A list of all available adapter configurations.
+     */
+    List<AdapterConfig> findAllConfigurations();
     Optional<AdapterConfig> findConfigurationById(String adapterId);
 
 }

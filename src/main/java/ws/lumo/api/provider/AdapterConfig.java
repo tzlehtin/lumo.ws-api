@@ -7,7 +7,9 @@ import java.util.Map;
  * This decouples adapters from the underlying domain model (e.g., CustomerAccount).
  *
  * @param adapterId A unique identifier for this adapter instance.
+ * @param type The type of the adapter (e.g., "EMAIL_ADAPTER", "JSON_CHAT_ADAPTER").
  * @param settings A map of key-value settings for the adapter.
+ * @param systemPrompt A system prompt to give the AI a specific persona or context.
  */
-public record AdapterConfig(String adapterId, Map<String, String> settings) {
+public record AdapterConfig(String adapterId, String type, Map<String, String> settings, String systemPrompt) {
 }

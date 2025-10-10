@@ -8,18 +8,18 @@ import java.util.Optional;
  * the underlying storage mechanism.
  */
 public interface EscalationTrackerApi {
-
     /**
      * Saves a new escalation record.
-     * @param escalationId The unique ID for the escalation.
-     * @param originalMessageId The Message-ID of the customer's original email.
+     * @param tracker The escalation tracker object to save.
      */
-    void save(String escalationId, String originalMessageId);
+    void save(EscalationTrackerDto tracker);
 
     /**
-     * Finds the original Message-ID for a given escalation ID.
+     * Finds an escalation record by its ID.
+     * @param escalationId The unique ID of the escalation.
+     * @return An Optional containing the EscalationTrackerDto if found.
      */
-    Optional<String> findOriginalMessageId(String escalationId);
+    Optional<EscalationTrackerDto> findById(String escalationId);
 
     /**
      * Deletes an escalation record once it has been resolved.
