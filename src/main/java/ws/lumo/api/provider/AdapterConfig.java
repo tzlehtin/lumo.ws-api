@@ -1,5 +1,6 @@
 package ws.lumo.api.provider;
 
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -10,6 +11,7 @@ import java.util.Map;
  * @param type The type of the adapter (e.g., "EMAIL_ADAPTER", "JSON_CHAT_ADAPTER").
  * @param settings A map of key-value settings for the adapter.
  * @param systemPrompt A system prompt to give the AI a specific persona or context.
+ * @param allowedOrigins A list of domains from which requests are allowed for this adapter.
  */
-public record AdapterConfig(String adapterId, String type, Map<String, String> settings, String systemPrompt) {
+public record AdapterConfig(String adapterId, String type, Map<String, String> settings, String systemPrompt, List<String> allowedOrigins) {
 }
