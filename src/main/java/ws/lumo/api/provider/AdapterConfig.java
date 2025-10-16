@@ -12,6 +12,9 @@ import java.util.Map;
  * @param settings A map of key-value settings for the adapter.
  * @param systemPrompt A system prompt to give the AI a specific persona or context.
  * @param allowedOrigins A list of domains from which requests are allowed for this adapter.
+ * @param trivialQueryWordThreshold The minimum number of words a query must have to be processed by the AI.
+ * @param trivialQueryResponse The canned response to send for queries that are too short.
+ * @param contextLength The number of recent messages to include in the context for the AI.
  * @param escalationEmail The email address to which escalations from this adapter should be sent.
  */
 public record AdapterConfig(String adapterId,
@@ -19,5 +22,8 @@ public record AdapterConfig(String adapterId,
                             Map<String, String> settings,
                             String systemPrompt,
                             List<String> allowedOrigins,
-                            String escalationEmail) {
+                            String escalationEmail,
+                            Integer trivialQueryWordThreshold,
+                            String trivialQueryResponse,
+                            Integer contextLength) {
 }
