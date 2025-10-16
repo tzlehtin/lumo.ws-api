@@ -6,6 +6,8 @@ import java.util.Map;
 /**
  * A generic Data Transfer Object (DTO) representing a single adapter's configuration.
  * This decouples adapters from the underlying domain model (e.g., CustomerAccount).
+ * @param customerId The ID of the customer account this adapter belongs to.
+ * @param greeting The initial greeting message for the chat.
  *
  * @param adapterId A unique identifier for this adapter instance.
  * @param type The type of the adapter (e.g., "EMAIL_ADAPTER", "JSON_CHAT_ADAPTER").
@@ -17,11 +19,13 @@ import java.util.Map;
  * @param contextLength The number of recent messages to include in the context for the AI.
  * @param escalationEmail The email address to which escalations from this adapter should be sent.
  */
-public record AdapterConfig(String adapterId,
+public record AdapterConfig(String customerId,
+                            String adapterId,
                             String type,
                             Map<String, String> settings,
                             String systemPrompt,
                             List<String> allowedOrigins,
+                            String greeting,
                             String escalationEmail,
                             Integer trivialQueryWordThreshold,
                             String trivialQueryResponse,
