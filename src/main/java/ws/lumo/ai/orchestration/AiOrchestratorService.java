@@ -19,4 +19,13 @@ public interface AiOrchestratorService {
      */
     ChatMessage generateCooperativeResponse(String adapterId, List<ChatMessage> history);
 
+    /**
+     * Generates a standard escalation message when the AI cannot answer.
+     * The message is fetched from the adapter's configuration and translated to the target language.
+     *
+     * @param adapterId The unique ID of the adapter context.
+     * @param targetLanguage The language to translate the escalation message into.
+     * @return A ChatMessage configured for escalation.
+     */
+    ChatMessage generateEscalationResponse(String adapterId, String targetLanguage);
 }

@@ -18,6 +18,7 @@ import java.util.Map;
  * @param trivialQueryResponse The canned response to send for queries that are too short.
  * @param contextLength The number of recent messages to include in the context for the AI.
  * @param escalationEmail The email address to which escalations from this adapter should be sent.
+ * @param escalationMessage The message template shown to the user when escalation is triggered.
  */
 public record AdapterConfig(String customerId,
                             String adapterId,
@@ -27,7 +28,12 @@ public record AdapterConfig(String customerId,
                             List<String> allowedOrigins,
                             String greeting,
                             String escalationEmail,
+                            String escalationMessage,
                             Integer trivialQueryWordThreshold,
                             String trivialQueryResponse,
-                            Integer contextLength) {
+                            Integer contextLength,
+                            Double languageDetectionConfidenceThreshold,
+                            Integer languageDetectionWordLimit,
+                            Boolean includeGreetingInEscalation,
+                            Boolean includeClosingInEscalation) {
 }

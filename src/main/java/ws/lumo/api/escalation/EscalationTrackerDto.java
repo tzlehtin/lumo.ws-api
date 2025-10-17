@@ -11,5 +11,6 @@ public record EscalationTrackerDto(
     String originatingAdapterId,
     String originalQuery,
     Map<String, String> customerContactInfo,
-    Map<String, String> originalMessageContext
+    Map<String, String> originalMessageContext,
+    String customerLanguage
 ) {}
