@@ -36,5 +36,6 @@ public record AdapterConfig(String customerId,
                             Integer languageDetectionWordLimit,
                             Boolean includeGreetingInEscalation,
                             Boolean includeClosingInEscalation,
-                            String expertLanguage) {
+                            String expertLanguage,
+                            String adapterKey) {
 }
