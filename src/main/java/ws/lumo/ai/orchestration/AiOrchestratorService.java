@@ -14,18 +14,7 @@ public interface AiOrchestratorService {
      *
      * @param adapterId The unique ID of the adapter context.
      * @param history   The full conversation history, with the latest user message at the end.
-     *                  The service will extract the latest query from this list.
-     * @return The generated ChatMessage response.
+     * @return An OrchestrationResult containing the response and the detected language.
      */
-    ChatMessage generateCooperativeResponse(String adapterId, List<ChatMessage> history);
-
-    /**
-     * Generates a standard escalation message when the AI cannot answer.
-     * The message is fetched from the adapter's configuration and translated to the target language.
-     *
-     * @param adapterId The unique ID of the adapter context.
-     * @param targetLanguage The language to translate the escalation message into.
-     * @return A ChatMessage configured for escalation.
-     */
-    ChatMessage generateEscalationResponse(String adapterId, String targetLanguage);
+    OrchestrationResult generateCooperativeResponse(String adapterId, List<ChatMessage> history);
 }
