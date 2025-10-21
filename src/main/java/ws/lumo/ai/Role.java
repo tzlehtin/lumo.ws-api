@@ -1,23 +1,21 @@
 package ws.lumo.ai;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 /**
- * Defines the originator of a message in a chat conversation.
- * This enum is part of the shared API and used by both the service and clients.
+ * Defines the possible roles in a chat conversation, following the convention
+ * used by many large language models.
  */
 public enum Role {
-    /**
-     * A message from the end-user.
-     */
     USER,
-
-    /**
-     * A message from the AI assistant.
-     */
     ASSISTANT,
+    SYSTEM;
 
-    /**
-     * A system-level instruction that sets the context or behavior for the assistant.
-     * This is typically not displayed to the user.
-     */
-    SYSTEM
+    @JsonCreator
+    public static Role fromString(String value) {
+        if (value == null) {
+            return null;
+        }
+        return Role.valueOf(value.toUpperCase());
+    }
 }

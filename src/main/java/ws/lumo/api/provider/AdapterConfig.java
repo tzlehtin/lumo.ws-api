@@ -1,13 +1,41 @@
 package ws.lumo.api.provider;
 
+import java.util.List;
 import java.util.Map;
 
 /**
  * A generic Data Transfer Object (DTO) representing a single adapter's configuration.
  * This decouples adapters from the underlying domain model (e.g., CustomerAccount).
+ * @param customerId The ID of the customer account this adapter belongs to.
+ * @param greeting The initial greeting message for the chat.
  *
  * @param adapterId A unique identifier for this adapter instance.
+ * @param type The type of the adapter (e.g., "EMAIL_ADAPTER", "JSON_CHAT_ADAPTER").
  * @param settings A map of key-value settings for the adapter.
+ * @param systemPrompt A system prompt to give the AI a specific persona or context.
+ * @param allowedOrigins A list of domains from which requests are allowed for this adapter.
+ * @param trivialQueryWordThreshold The minimum number of words a query must have to be processed by the AI.
+ * @param trivialQueryResponse The canned response to send for queries that are too short.
+ * @param contextLength The number of recent messages to include in the context for the AI.
+ * @param escalationEmail The email address to which escalations from this adapter should be sent.
+ * @param escalationMessage The message template shown to the user when escalation is triggered.
  */
-public record AdapterConfig(String adapterId, Map<String, String> settings) {
+public record AdapterConfig(String customerId,
+                            String adapterId,
+                            String type,
+                            Map<String, String> settings,
+                            String systemPrompt,
+                            List<String> allowedOrigins,
+                            String greeting,
+                            String escalationEmail,
+                            String escalationMessage,
+                            Integer trivialQueryWordThreshold,
+                            String trivialQueryResponse,
+                            Integer contextLength,
+                            Double languageDetectionConfidenceThreshold,
+                            Integer languageDetectionWordLimit,
+                            Boolean includeGreetingInEscalation,
+                            Boolean includeClosingInEscalation,
+                            String expertLanguage,
+                            String adapterKey) {
 }
