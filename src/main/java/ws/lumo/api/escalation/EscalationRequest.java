@@ -1,5 +1,6 @@
 package ws.lumo.api.escalation;
 
+import ws.lumo.ai.ChatMessage;
 import java.util.Map;
 
 /**
@@ -11,5 +12,14 @@ import java.util.Map;
  * @param originalMessageContext A map for channel-specific context (e.g., "messageId": "<...>" for email).
  * @param customerName Optional name of the customer for personalization.
  * @param customerLanguage The language of the original customer query (e.g., "en", "fi").
+ * @param history The conversation history leading up to the escalation.
  */
-public record EscalationRequest(String adapterId, String originalQuery, Map<String, String> customerContactInfo, Map<String, String> originalMessageContext, String customerName, String customerLanguage) {}
+public record EscalationRequest(
+        String adapterId,
+        String originalQuery,
+        Map<String, String> customerContactInfo,
+        Map<String, String> originalMessageContext,
+        String customerName,
+        String customerLanguage,
+        java.util.List<ChatMessage> history
+) {}

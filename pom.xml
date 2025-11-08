@@ -12,12 +12,13 @@
 
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>0.2.0</version>
+    <version>0.3.0</version>
     <name>lumo-api</name>
     <description>Lumo AI Shared API</description>
 
     <properties>
         <java.version>23</java.version>
+        <spring-ai.version>1.0.2</spring-ai.version>
     </properties>
 
     <dependencies>
@@ -35,7 +36,37 @@
             <artifactId>lombok</artifactId>
             <optional>true</optional>
         </dependency>
+        <!-- Lisätään Spring Data MongoDB -riippuvuus, jotta @Document ja @Id annotaatiot löytyvät.
+             Tämä on välttämätöntä, koska ConversationHistory-luokka käyttää niitä. -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.ai</groupId>
+            <artifactId>spring-ai-client-chat</artifactId>
+        </dependency>
     </dependencies>
+
+    <!-- Tuodaan Spring AI:n riippuvuuksien hallinta (BOM), jotta versiot ovat yhdenmukaisia. -->
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${project.parent.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.ai</groupId>
+                <artifactId>spring-ai-bom</artifactId>
+                <version>${spring-ai.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <build>
         <plugins>
