@@ -12,7 +12,7 @@
 
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>0.5.0-SNAPSHOT</version>
+    <version>0.5.1</version>
     <name>lumo-api</name>
     <description>Lumo AI Shared API</description>
 
