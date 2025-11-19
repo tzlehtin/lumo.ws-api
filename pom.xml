@@ -3,21 +3,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.6</version>
-        <relativePath/> <!-- lookup parent from repository -->
-    </parent>
-
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>0.5.2-SNAPSHOT</version>
+    <version>0.5.3-SNAPSHOT</version>
     <name>lumo-api</name>
     <description>Lumo AI Shared API</description>
 
     <properties>
         <java.version>23</java.version>
+        <spring-boot.version>3.5.6</spring-boot.version>
         <spring-ai.version>1.0.2</spring-ai.version>
     </properties>
 
@@ -46,12 +40,12 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-dependencies</artifactId>
-                <version>${project.parent.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
+                 <groupId>org.springframework.boot</groupId>
+                 <artifactId>spring-boot-dependencies</artifactId>
+                 <version>${spring-boot.version}</version>
+                 <type>pom</type>
+                 <scope>import</scope>
+             </dependency>
             <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
@@ -67,7 +61,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <!-- KORJAUS: Määritellään Java-versio eksplisiittisesti, koska spring-boot-parent puuttuu. -->
+                <version>3.14.0</version>
                 <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
