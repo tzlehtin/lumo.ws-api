@@ -18,4 +18,15 @@ public interface AdapterRegistry {
      * Registers a new adapter instance with the registry.
      */
     void registerAdapter(Adapter adapter);
+
+    /**
+     * Removes an adapter instance from the registry, effectively stopping it.
+     * @param adapterId The ID of the adapter to unregister.
+     */
+    void unregisterAdapter(String adapterId);
+
+    /**
+     * Reloads a specific adapter's configuration and restarts it.
+     */
+    void reloadAdapter(String adapterId);
 }
