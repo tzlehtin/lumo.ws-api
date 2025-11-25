@@ -32,4 +32,5 @@ public class AdapterConfigDto {
     private String expertLanguage;
     private Boolean includeGreetingInEscalation;
     private Boolean includeClosingInEscalation;
+    private Integer contextDocumentLimit;
 }

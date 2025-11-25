@@ -37,5 +37,6 @@ public record AdapterConfig(String customerId,
                             Boolean includeGreetingInEscalation,
                             Boolean includeClosingInEscalation,
                             String expertLanguage,
-                            String adapterKey) {
+                            String adapterKey,
+                            Integer contextDocumentLimit) {
 }

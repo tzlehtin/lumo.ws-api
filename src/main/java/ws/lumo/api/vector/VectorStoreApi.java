@@ -14,7 +14,7 @@ public interface VectorStoreApi {
     /**
      * Lists all documents associated with a specific adapter.
      */
-    List<DocumentMetadataDto> listDocuments(String adapterId);
+    List<DocumentMetadataDto> listDocuments(String adapterId, String searchTerm, int page, int size);
 
     /**
      * Ingests a new document from a file upload.
