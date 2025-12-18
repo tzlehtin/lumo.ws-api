@@ -11,7 +11,10 @@ public interface ProcessedItemApi {
      * @param itemKey A unique key for the item (e.g., a URL, an email Message-ID).
      * @return true if the item has been processed, false otherwise.
      */
-    boolean isItemProcessed(String adapterId, String itemKey);
+    default boolean isItemProcessed(String adapterId, String itemKey) {
+        String normalizedKey = itemKey.replaceFirst("^(http[s]?://www\\.|http[s]?://|www\\.)","").replaceAll("/$", "");
+        return isItemProcessedNormalized(adapterId, normalizedKey);
+    }
 
     /**
      * Marks an item as processed for a specific adapter.
@@ -20,4 +23,6 @@ public interface ProcessedItemApi {
      */
     void markItemAsProcessed(String adapterId, String itemKey);
 
+    // Sisäinen metodi, jota toteutuksen tulee käyttää.
+    boolean isItemProcessedNormalized(String adapterId, String normalizedKey);
 }
