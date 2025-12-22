@@ -12,7 +12,9 @@ public interface ProcessedItemApi {
      * @return true if the item has been processed, false otherwise.
      */
     default boolean isItemProcessed(String adapterId, String itemKey) {
-        String normalizedKey = itemKey.replaceFirst("^(http[s]?://www\\.|http[s]?://|www\\.)","").replaceAll("/$", "");
+        // KORJAUS: Varmistetaan, että itemKey ei ole null ennen käsittelyä.
+        if (itemKey == null) return false;
+        String normalizedKey = itemKey.trim().replaceFirst("^(https?://)?(www\\.)?", "").replaceAll("/$", "");
         return isItemProcessedNormalized(adapterId, normalizedKey);
     }
 
