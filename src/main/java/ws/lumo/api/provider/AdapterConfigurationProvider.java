@@ -24,4 +24,10 @@ public interface AdapterConfigurationProvider {
     List<AdapterConfig> findAllConfigurations();
     Optional<AdapterConfig> findConfigurationById(String adapterId);
 
+    /**
+     * Updates the cron expression for a specific adapter.
+     * @param adapterId The ID of the adapter to update. This will be stored in the adapter's properties.
+     * @param cronExpression The new cron expression string to be stored.
+     */
+    void updateCronExpression(String adapterId, String cronExpression);
 }

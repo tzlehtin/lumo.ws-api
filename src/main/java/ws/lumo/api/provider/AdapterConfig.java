@@ -38,5 +38,6 @@ public record AdapterConfig(String customerId,
                             Boolean includeClosingInEscalation,
                             String expertLanguage,
                             String adapterKey,
-                            Integer contextDocumentLimit) {
+                            Integer contextDocumentLimit,
+                            Boolean forceTranslation) {
 }
