@@ -33,4 +33,5 @@ public class AdapterConfigDto {
     private Boolean includeGreetingInEscalation;
     private Boolean includeClosingInEscalation;
     private Integer contextDocumentLimit;
+    private Boolean forceTranslation;
 }
