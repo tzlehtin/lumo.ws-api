@@ -5,7 +5,7 @@
 
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>0.9.6-SNAPSHOT</version>
+    <version>0.9.7-SNAPSHOT</version>
     <name>lumo-api</name>
     <description>Lumo AI Shared API</description>
 
@@ -79,6 +79,40 @@
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
+            </plugin>
+            <!-- KORJAUS: Lisätään maven-clean-pluginin versio, joka voi auttaa tiedostolukitusongelmissa. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-clean-plugin</artifactId>
+                <version>3.4.0</version>
+            </plugin>
+            <!-- KORJAUS: Palautetaan Javadoc-plugin, jotta javadoc.jar-tiedosto luodaan `package`-vaiheessa. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.6.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- KORJAUS: Lisätään lähdekoodit mukaan pakettiin. Tämä on hyvä käytäntö kirjastoille. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>3.3.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
