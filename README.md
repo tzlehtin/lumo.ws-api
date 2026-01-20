@@ -125,8 +125,8 @@ public class EchoAdapter implements Adapter {
 
 ## 5. Vaihe 4: Paketoi ja ota käyttöön
 
-Kun olet toteuttanut oman adapterisi, sinun tulee paketoida se JAR-tiedostoksi (`mvn package`) ja lisätä se `lumo-service`-pääsovelluksen riippuvuudeksi. Tämän jälkeen sinun tulee vielä opettaa `AdapterLifecycleService` tunnistamaan ja alustamaan uusi adapterityyppisi.
+Kun olet toteuttanut oman adapterisi, sinun tulee paketoida se JAR-tiedostoksi (mvn package) ja lisätä se lumo-service-pääsovelluksen riippuvuudeksi. Tämän jälkeen sinun tulee vielä opettaa AdapterLifecycleService tunnistamaan ja alustamaan uusi adapterityyppisi. +Tällä hetkellä Lumo.ws-alusta ei tarjoa julkista rajapintaa omien adapterien itsenäiseen käyttöönottoon. Adapterin integrointi osaksi palvelua vaatii yhteistyötä Louhi Software Oy:n kehitystiimin kanssa.
 
 ## 6. Vaihe 5: Konfiguroi adapteri Lumo.ws:n hallintapaneelissa
 
-Lopuksi voit luoda hallintapaneelissa uuden adapterin, antaa sille oman, uniikin tyyppisi (esim. `ECHO_ADAPTER`) ja konfiguroida sen asetukset. Kun `lumo-service` käynnistyy, se löytää ja alustaa uuden adapterisi automaattisesti.
+Konfiguroi adapteri Lumo.ws:n hallintapaneelissa +Jos olet kiinnostunut toteuttamaan oman adapterisi, ota yhteyttä asiakaspalveluumme keskustellaksesi jatkotoimenpiteistä.
