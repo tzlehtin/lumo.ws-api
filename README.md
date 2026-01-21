@@ -1,6 +1,6 @@
 # Oman Lumo.ws-adapterin toteutusopas
 
-Tämä opas neuvoo, miten voit kehittää ja integroida oman, räätälöidyn adapterin Lumo.ws-alustaan. Adapterit ovat Lumo.ws:n ydin: ne toimivat siltana tekoälyn ja ulkoisten järjestelmien (kuten chatin, sähköpostin tai omien taustajärjestelmiesi) välillä.
+Tämä opas neuvoo, miten voit kehittää ja integroida oman, räätälöidyn adapterin Lumo.ws-alustaan. Adapterit ovat Lumo.ws:n ydin: ne toimivat siltana tekoälyn ja ulkoisten järjestelmien (kuten chatin, sähköpostin tai omien taustajärjestelmiesi) välillä. Adapterin avulla voit laajentaa tekoälyn kykyjä antamalla sille uusia työkaluja, joilla se voi olla vuorovaikutuksessa muiden järjestelmien kanssa.
 
 ## 1. Edellytykset
 
@@ -56,7 +56,7 @@ Luo uusi, tyhjä Maven-projekti omalle adapterillesi. Tässä on esimerkki `pom.
         <dependency>
             <groupId>ws.lumo</groupId>
             <artifactId>lumo-api</artifactId>
-            <version>0.9.7-SNAPSHOT</version>
+            <version>0.9.8-SNAPSHOT</version>
             <!-- 
                 Skooppi 'provided' on tärkeä, koska pääsovellus (lumo-service)
                 tarjoaa tämän riippuvuuden ajonaikaisesti.
@@ -64,6 +64,14 @@ Luo uusi, tyhjä Maven-projekti omalle adapterillesi. Tässä on esimerkki `pom.
             <scope>provided</scope>
         </dependency>
     </dependencies>
+    <!-- KORJAUS: Lisätään Jackson-riippuvuus, jota tarvitaan työkalumäärittelyjen luomiseen.
+         Skooppi on 'provided', koska pääsovellus tarjoaa tämän. -->
+    <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>2.17.0</version> <!-- Käytä yhteensopivaa versiota -->
+        <scope>provided</scope>
+    </dependency>
 
 </project>
 ```
