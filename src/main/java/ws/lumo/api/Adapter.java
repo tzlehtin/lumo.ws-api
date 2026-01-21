@@ -15,6 +15,12 @@ public interface Adapter {
     String getAdapterId();
 
     /**
+     * Return context lenght for this adapter
+     */
+    int getContextLength();
+
+
+    /**
      * Returns a list of tools this adapter makes available to the AI.
      */
     List<ToolSpecification> getToolSpecifications();

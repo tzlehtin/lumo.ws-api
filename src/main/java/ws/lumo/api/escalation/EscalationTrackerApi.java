@@ -24,6 +24,23 @@ public interface EscalationTrackerApi {
     /**
      * Deletes an escalation record once it has been resolved.
      */
-    void deleteById(String escalationId);
+       /**
+     * Deletes an escalation record once it has been resolved.
+     */
+    void deleteById(String escalationId);    
 
+    /**
+     * Creates a temporary tracker for a conversation that is waiting for user input (e.g., an email address).
+     */
+    void createPendingEscalation(String sessionId, String adapterId, String originalQuery, String customerLanguage);
+
+    /**
+     * Finds a pending escalation tracker by its session ID and status.
+     */
+    Optional<EscalationTrackerDto> findBySessionIdAndStatus(String sessionId, String status);
+
+    /**
+     * Updates the status of an existing escalation tracker.
+     */
+    void updateStatus(String id, String newStatus);
 }

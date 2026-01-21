@@ -11,7 +11,7 @@ public interface TranslationService {
      * @param targetLanguage The ISO 639-1 code of the target language (e.g., "en", "sv").
      * @return The translated text.
      */
-    String translate(String text, String targetLanguage);
+    TranslationResult translate(String text, String targetLanguage);
 
     /**
      * Detects the language of the given text.
