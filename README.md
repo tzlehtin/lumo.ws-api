@@ -56,22 +56,25 @@ Luo uusi, tyhjä Maven-projekti omalle adapterillesi. Tässä on esimerkki `pom.
         <dependency>
             <groupId>ws.lumo</groupId>
             <artifactId>lumo-api</artifactId>
-            <version>0.9.8-SNAPSHOT</version>
+            <version>1.0.0</version>
             <!-- 
                 Skooppi 'provided' on tärkeä, koska pääsovellus (lumo-service)
                 tarjoaa tämän riippuvuuden ajonaikaisesti.
             -->
             <scope>provided</scope>
         </dependency>
+
+        <!-- 
+            Lumo-api vaatii Jackson-kirjaston, mutta se on määritelty 'provided'-skooppiin
+            lumo-api:n pom.xml-tiedostossa. Sinun tulee lisätä se pääsovelluksesi
+            riippuvuuksiin, jos se ei ole jo siellä.
+        -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.17.0</version> <!-- Käytä pääsovelluksesi kanssa yhteensopivaa versiota -->
+        </dependency>
     </dependencies>
-    <!-- KORJAUS: Lisätään Jackson-riippuvuus, jota tarvitaan työkalumäärittelyjen luomiseen.
-         Skooppi on 'provided', koska pääsovellus tarjoaa tämän. -->
-    <dependency>
-        <groupId>com.fasterxml.jackson.core</groupId>
-        <artifactId>jackson-databind</artifactId>
-        <version>2.17.0</version> <!-- Käytä yhteensopivaa versiota -->
-        <scope>provided</scope>
-    </dependency>
 
 </project>
 ```
@@ -94,13 +97,16 @@ import java.util.Map;
 
 /**
  * Yksinkertainen esimerkkiadapteri, joka ainoastaan tulostaa sille annetut käskyt.
+ * Tämä luokka ei ole Spring-komponentti, vaan sen instanssin luo AdapterLifecycleService.
  */
-public class EchoAdapter implements Adapter {
+public class MyEchoAdapter implements Adapter {
 
     private final AdapterConfig config;
+    private final ObjectMapper objectMapper;
 
-    public EchoAdapter(AdapterConfig config) {
+    public MyEchoAdapter(AdapterConfig config, ObjectMapper objectMapper) {
         this.config = config;
+        this.objectMapper = objectMapper;
     }
 
     @Override
@@ -126,15 +132,20 @@ public class EchoAdapter implements Adapter {
         // Tämä metodi suoritettaisiin, jos tekoäly kutsuisi työkalua.
         // Nyt vain kirjaamme kutsun ja palautamme viestin.
         System.out.println("Executed tool: " + toolName + " with arguments: " + arguments);
-        return "Tool '" + toolName + "' executed successfully by EchoAdapter.";
+        return "Tool '" + toolName + "' executed successfully by MyEchoAdapter.";
     }
 }
 ```
 
 ## 5. Vaihe 4: Paketoi ja ota käyttöön
 
-Kun olet toteuttanut oman adapterisi, sinun tulee paketoida se JAR-tiedostoksi (mvn package) ja lisätä se lumo-service-pääsovelluksen riippuvuudeksi. Tämän jälkeen sinun tulee vielä opettaa AdapterLifecycleService tunnistamaan ja alustamaan uusi adapterityyppisi. +Tällä hetkellä Lumo.ws-alusta ei tarjoa julkista rajapintaa omien adapterien itsenäiseen käyttöönottoon. Adapterin integrointi osaksi palvelua vaatii yhteistyötä Louhi Software Oy:n kehitystiimin kanssa.
+Kun olet toteuttanut oman adapterisi, sinun tulee paketoida se JAR-tiedostoksi (`mvn package`) ja lisätä se `lumo-service`-pääsovelluksen riippuvuudeksi. Tämän jälkeen sinun tulee vielä opettaa `AdapterLifecycleService` tunnistamaan ja alustamaan uusi adapterityyppisi.
+
+Tällä hetkellä Lumo.ws-alusta ei tarjoa julkista rajapintaa omien adapterien itsenäiseen käyttöönottoon. Adapterin integrointi osaksi palvelua vaatii yhteistyötä Louhi Software Oy:n kehitystiimin kanssa.
+
 
 ## 6. Vaihe 5: Konfiguroi adapteri Lumo.ws:n hallintapaneelissa
 
 Konfiguroi adapteri Lumo.ws:n hallintapaneelissa +Jos olet kiinnostunut toteuttamaan oman adapterisi, ota yhteyttä asiakaspalveluumme keskustellaksesi jatkotoimenpiteistä.
+
+Jos olet kiinnostunut toteuttamaan oman adapterisi, ota yhteyttä asiakaspalveluumme keskustellaksesi jatkotoimenpiteistä.
