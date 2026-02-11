@@ -5,7 +5,7 @@
 
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0-SNAPSHOT</version>
     <name>lumo-api</name>
     <description>Lumo AI Shared API</description>
 
