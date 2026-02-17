@@ -27,4 +27,22 @@ public interface ProcessedItemApi {
 
     // Sisäinen metodi, jota toteutuksen tulee käyttää.
     boolean isItemProcessedNormalized(String adapterId, String normalizedKey);
+
+    /**
+     * Checks if a specific contact (person) within a company has already been processed.
+     * This is used for multi-contact leads like from Vainu.
+     * @param adapterId The ID of the adapter.
+     * @param businessId The company's unique business ID (Y-tunnus).
+     * @param email The contact person's email.
+     * @return true if the contact has been processed, false otherwise.
+     */
+    boolean isContactProcessed(String adapterId, String businessId, String email);
+
+    /**
+     * Marks a specific contact as processed.
+     * @param adapterId The ID of the adapter.
+     * @param businessId The company's unique business ID.
+     * @param email The contact person's email.
+     */
+    void markContactAsProcessed(String adapterId, String businessId, String email);
 }
