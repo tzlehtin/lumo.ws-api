@@ -7,5 +7,7 @@ package ws.lumo.api.provider;
 public interface OnboardingTokenApi {
 
     String createSalesLeadToken(String email, String leadName, String leadUrl);
+    boolean isTokenUsed(String token);
+
 
 }

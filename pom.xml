@@ -3,16 +3,23 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.5.6</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>1.2.0-SNAPSHOT</version>
+    <version>1.2.1-SNAPSHOT</version>
     <name>lumo-api</name>
-    <description>Lumo AI Shared API</description>
+    <description>Shared API and Domain objects for Lumo.ws services</description>
 
     <properties>
         <java.version>21</java.version>
-        <spring-boot.version>3.5.6</spring-boot.version>
         <spring-ai.version>1.0.2</spring-ai.version>
+        <lombok.version>1.18.30</lombok.version>
     </properties>
 
     <dependencies>
@@ -24,6 +31,20 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <!--
+         KORJAUS: Lisätään Spring Data -riippuvuudet 'provided'-skoopilla.
+         Vaikka pääsovellus tarjoaa nämä, ne ovat välttämättömiä käännösvaiheessa,
+         jotta domain-luokkien @Id- ja @Document-annotaatiot tunnistetaan.
+        -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-mongodb</artifactId>
+            <!-- This scope is managed by the Spring Boot parent POM -->
         </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
@@ -46,13 +67,6 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                 <groupId>org.springframework.boot</groupId>
-                 <artifactId>spring-boot-dependencies</artifactId>
-                 <version>${spring-boot.version}</version>
-                 <type>pom</type>
-                 <scope>import</scope>
-             </dependency>
-            <dependency>
                 <groupId>org.springframework.ai</groupId>
                 <artifactId>spring-ai-bom</artifactId>
                 <version>${spring-ai.version}</version>
@@ -64,27 +78,19 @@
 
     <build>
         <plugins>
+            <!-- KORJAUS: Varmistetaan, että Lombok-annotaatioprosessori on konfiguroitu oikein. -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <!-- KORJAUS: Määritellään Java-versio eksplisiittisesti, koska spring-boot-parent puuttuu. -->
-                <version>3.14.0</version>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
                     <annotationProcessorPaths>
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
+                            <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
                 </configuration>
-            </plugin>
-            <!-- KORJAUS: Lisätään maven-clean-pluginin versio, joka voi auttaa tiedostolukitusongelmissa. -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.4.0</version>
             </plugin>
             <!-- KORJAUS: Palautetaan Javadoc-plugin, jotta javadoc.jar-tiedosto luodaan `package`-vaiheessa. -->
             <plugin>
