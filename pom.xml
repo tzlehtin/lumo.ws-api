@@ -12,7 +12,7 @@
 
     <groupId>ws.lumo</groupId>
     <artifactId>lumo-api</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.2.1</version>
     <name>lumo-api</name>
     <description>Shared API and Domain objects for Lumo.ws services</description>
 
