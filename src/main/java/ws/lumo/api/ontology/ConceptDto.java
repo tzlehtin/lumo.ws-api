@@ -1,10 +1,12 @@
 package ws.lumo.api.ontology;
 
+import lombok.Data;
+
 /**
- * Represents a single concept identified from the data.
- *
- * @param name The name of the concept (e.g., "Lumo.ws", "Tero Lehtinen").
- * @param type The type of the concept (e.g., "Product", "Person").
+ * Data Transfer Object for a single concept extracted by the AI.
  */
-public record ConceptDto(String name, String type) {
+@Data
+public class ConceptDto {
+    private String name;
+    private String type;
 }

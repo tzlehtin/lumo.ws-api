@@ -1,11 +1,13 @@
 package ws.lumo.api.ontology;
 
+import lombok.Data;
+
 /**
- * Represents a relationship between two concepts.
- *
- * @param source The source concept's name.
- * @param verb The verb describing the relationship (e.g., "is a", "sells", "contains").
- * @param target The target concept's name.
+ * Data Transfer Object for a single relationship between two concepts.
  */
-public record RelationshipDto(String source, String verb, String target) {
+@Data
+public class RelationshipDto {
+    private String source;
+    private String verb;
+    private String target;
 }

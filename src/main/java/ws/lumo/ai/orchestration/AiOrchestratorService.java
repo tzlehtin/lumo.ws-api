@@ -7,7 +7,7 @@ import ws.lumo.ai.ChatMessage;
  * The central service interface for orchestrating AI interactions.
  * Adapters will depend on this interface, not its implementation.
  */
-public interface AiOrchestratorService {
+public interface AiOrchestratorService extends AiResponseGenerator { // KORJAUS: Laajennetaan AiResponseGenerator-rajapintaa
     /**
      * Generates a response to a user query within a specific context.
      *

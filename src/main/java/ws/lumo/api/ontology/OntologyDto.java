@@ -1,12 +1,16 @@
 package ws.lumo.api.ontology;
 
+import lombok.Data;
+
 import java.util.List;
 
 /**
- * A Data Transfer Object representing a complete ontology generated from a set of documents.
- *
- * @param concepts A list of identified concepts.
- * @param relationships A list of identified relationships between the concepts.
+ * Data Transfer Object for the complete set of concepts and relationships
+ * extracted from a single piece of text.
  */
-public record OntologyDto(List<ConceptDto> concepts, List<RelationshipDto> relationships) {
+@Data
+public class OntologyDto {
+    private List<ConceptDto> concepts;
+    private List<RelationshipDto> relationships;
+    private String language;
 }
