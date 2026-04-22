@@ -13,16 +13,26 @@ public interface VectorStoreApi {
 
     /**
      * Lists all documents associated with a specific adapter.
+     * @param adapterId The ID of the adapter.
+     * @param searchTerm An optional term to filter documents by description or content.
+     * @param page The page number to retrieve.
+     * @param size The number of documents per page.
+     * @return A list of document metadata DTOs.
      */
     List<DocumentMetadataDto> listDocuments(String adapterId, String searchTerm, int page, int size);
 
     /**
      * Ingests a new document from a file upload.
+     * @param adapterId The ID of the adapter.
+     * @param file The file to ingest.
+     * @param description A description for the document.
+     * @return The result of the ingestion, containing the document ID.
      */
     IngestionResult ingestDocument(String adapterId, MultipartFile file, String description);
 
     /**
      * Deletes a single document from the vector store by its ID.
+     * @param documentId The ID of the document to delete.
      */
     void deleteDocument(String documentId);
 

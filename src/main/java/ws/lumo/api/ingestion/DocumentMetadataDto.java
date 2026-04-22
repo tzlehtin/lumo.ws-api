@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
+/**
+ * A DTO representing the metadata of a document stored in the vector store.
+ */
 @Data
 @Builder
 @NoArgsConstructor
