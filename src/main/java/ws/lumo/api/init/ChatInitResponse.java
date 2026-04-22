@@ -11,4 +11,6 @@ public class ChatInitResponse {
     private String sessionId;
     private String greeting;
     private String trivialResponse;
+    private String status; // UUSI
+    private String unavailableMessage; // UUSI
 }
