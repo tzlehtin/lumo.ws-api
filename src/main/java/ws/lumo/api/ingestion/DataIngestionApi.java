@@ -16,17 +16,19 @@ public interface DataIngestionApi {
      * @param contentStream The InputStream of the document's content.
      * @param description An optional description for the document's context.
      * @param contentType The MIME type of the content (e.g., "text/plain", "application/pdf").
+     * @param sourceUrl The original URL from where the content was fetched.
      * @return The ID of the newly created document.
      */
-    String ingestDocument(String adapterId, InputStream contentStream, String description, String contentType);
+    String ingestDocument(String adapterId, InputStream contentStream, String description, String contentType, String sourceUrl);
 
     /**
      * Ingests a single document from a String content.
      * This is a convenience method for backward compatibility.
-     * @deprecated Use {@link #ingestDocument(String, InputStream, String, String)} instead.
+     * @deprecated Use {@link #ingestDocument(String, InputStream, String, String, String)} instead.
      */
     default String ingestDocument(String adapterId, String content, String description) {
-        return ingestDocument(adapterId, new ByteArrayInputStream(content.getBytes(java.nio.charset.StandardCharsets.UTF_8)), description, "text/plain");
+        // KORJAUS: Välitetään null sourceUrl:lle, koska tätä metodia ei pitäisi enää käyttää crawlerissa.
+        return ingestDocument(adapterId, new ByteArrayInputStream(content.getBytes(java.nio.charset.StandardCharsets.UTF_8)), description, "text/plain", null);
     }
 
     /**
