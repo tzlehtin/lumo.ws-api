@@ -22,7 +22,7 @@ public class AdapterConfigDto {
     private List<String> allowedOrigins;
     private Integer trivialQueryWordThreshold;
     private String trivialQueryResponse;
-    private Map<String, String> properties;
+    private Map<String, Object> properties;
     private String escalationEmail;
     private Integer contextLength;
     private String greeting;
