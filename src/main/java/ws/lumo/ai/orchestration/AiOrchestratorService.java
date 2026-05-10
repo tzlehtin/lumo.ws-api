@@ -16,4 +16,13 @@ public interface AiOrchestratorService {
      * @return An OrchestrationResult containing the response and the detected language.
      */
     OrchestrationResult generateCooperativeResponse(String adapterId, List<ChatMessage> history);
+
+    /**
+     * Generates a cooperative response with specific processing options.
+     * @param adapterId The unique ID of the adapter context.
+     * @param history   The full conversation history.
+     * @param options   Options to control the orchestration process.
+     * @return An OrchestrationResult containing the response.
+     */
+    OrchestrationResult generateCooperativeResponse(String adapterId, List<ChatMessage> history, OrchestrationOptions options);
 }

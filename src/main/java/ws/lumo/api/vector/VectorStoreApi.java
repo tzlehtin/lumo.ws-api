@@ -36,6 +36,15 @@ public interface VectorStoreApi {
      */
     void deleteDocument(String documentId);
 
+    /**
+     * Finds multiple documents from the vector store by their specific IDs.
+     * This is used for targeted lookups where the document IDs are already known.
+     *
+     * @param documentIds A list of document IDs.
+     * @return A list of found documents.
+     */
+    List<org.springframework.ai.document.Document> findDocumentsByIds(List<String> documentIds);
+
     // Tähän lisätään myöhemmin hakutoiminto.
     // List<DocumentMetadataDto> searchDocuments(String adapterId, String query);
 }

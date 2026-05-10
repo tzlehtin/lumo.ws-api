@@ -30,7 +30,7 @@ import java.util.Map;
 public record AdapterConfig(String customerId,
                             String adapterId,
                             String type,
-                            Map<String, Object> settings,
+                            Map<String, Object> settings, // KORJAUS: Muutetaan tyyppi joustavammaksi
                             String systemPrompt,
                             List<String> allowedOrigins,
                             String greeting,
