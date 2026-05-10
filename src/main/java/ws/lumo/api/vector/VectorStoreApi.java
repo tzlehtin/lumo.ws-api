@@ -5,6 +5,8 @@ import ws.lumo.api.ingestion.IngestionResult;
 import ws.lumo.api.ingestion.DocumentMetadataDto;
 
 import java.util.List;
+import java.util.Optional;
+
 
 /**
  * An API for managing documents within the vector store.
@@ -44,6 +46,14 @@ public interface VectorStoreApi {
      * @return A list of found documents.
      */
     List<org.springframework.ai.document.Document> findDocumentsByIds(List<String> documentIds);
+
+    /**
+     * Finds the raw content of a document by its unique ID from the vector store.
+     *
+     * @param documentId The ID of the document.
+     * @return An Optional containing the document content as a String, or empty if not found.
+     */
+    Optional<String> findDocumentContentById(String documentId);
 
     // Tähän lisätään myöhemmin hakutoiminto.
     // List<DocumentMetadataDto> searchDocuments(String adapterId, String query);

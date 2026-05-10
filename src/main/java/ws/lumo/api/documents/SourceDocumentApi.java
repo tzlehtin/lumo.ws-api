@@ -1,6 +1,5 @@
 package ws.lumo.api.documents;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -11,11 +10,4 @@ public interface SourceDocumentApi {
 
     Optional<String> findDocumentContentById(String documentId);
 
-    /**
-     * Finds all document metadata associated with a specific adapter.
-     *
-     * @param adapterId The ID of the adapter.
-     * @return A list of document metadata.
-     */
-    List<SourceDocumentMetadata> findAllDocumentsByAdapterId(String adapterId);
 }
