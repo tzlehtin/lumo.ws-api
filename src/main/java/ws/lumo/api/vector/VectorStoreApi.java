@@ -1,5 +1,6 @@
 package ws.lumo.api.vector;
 
+import org.bson.Document;
 import org.springframework.web.multipart.MultipartFile;
 import ws.lumo.api.ingestion.IngestionResult;
 import ws.lumo.api.ingestion.DocumentMetadataDto;
@@ -45,7 +46,7 @@ public interface VectorStoreApi {
      * @param documentIds A list of document IDs.
      * @return A list of found documents.
      */
-    List<org.springframework.ai.document.Document> findDocumentsByIds(List<String> documentIds);
+    List<Document> findDocumentsByIds(List<String> documentIds);
 
     /**
      * Finds the raw content of a document by its unique ID from the vector store.
