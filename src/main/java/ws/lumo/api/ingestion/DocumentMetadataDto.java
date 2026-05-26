@@ -19,4 +19,6 @@ public class DocumentMetadataDto {
     private String description;
     private Instant ingestedAt;
     private String adapterId;
+    private String sourceUrl;
+
 }
