@@ -8,6 +8,6 @@ import lombok.Data;
 @Data
 public class RelationshipDto {
     private String source;
-    private String verb;
+    private String verb; 
     private String target;
 }

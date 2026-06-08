@@ -9,4 +9,5 @@ import lombok.Data;
 public class ConceptDto {
     private String name;
     private String type;
+    private String value;
 }
