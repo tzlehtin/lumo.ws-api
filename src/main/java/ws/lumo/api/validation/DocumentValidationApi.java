@@ -19,9 +19,10 @@ public interface DocumentValidationApi {
      * Triggers a validation process for a specific document.
      * The process runs asynchronously in the background.
      * @param adapterId The ID of the adapter context.
+     * @param fileId The unique ID of the file in the source (e.g., Google Drive).
      * @param documentName The name of the document/file to validate from the source (e.g., Google Drive).
      */
-    void triggerValidation(String adapterId, String documentName);
+    void triggerValidation(String adapterId, String fileId, String documentName);
 
     /**
      * Lists files from the Google Drive folder configured for the adapter.
