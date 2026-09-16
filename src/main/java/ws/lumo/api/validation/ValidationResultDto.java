@@ -19,5 +19,6 @@ public class ValidationResultDto {
     private String status;
     private String strategy;
     private String details;
-
+        // LOPULLINEN KORJAUS: Lisätään puuttuva kenttä, joka aiheutti käännösvirheen.
+    private String uncertaintyContextId;
 }
